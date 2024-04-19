@@ -1,0 +1,20 @@
+<div class="profile">
+  <h1 class="heading">Профіль</h1>
+
+  <ul class="list" *ngIf="userData">
+    <li class="listItem">
+      <span class="fieldName">Ім&apos;я: </span
+      ><span class="fieldValue">{{ userData?.firstName }}</span>
+    </li>
+    <li class="listItem">
+      <span class="fieldName">Прізвище: </span>
+      <span class="fieldValue">{{ userData?.lastName }}</span>
+    </li>
+    <li class="listItem" *ngIf="userData?.email">
+      <span class="fieldName">Ел. пошта: </span>
+      <span class="fieldValue">{{ userData?.email }}</span>
+    </li>
+  </ul>
+
+  <p *ngIf="!userData" class="empty">Профіль порожній</p>
+</div>

@@ -1,0 +1,54 @@
+<div class="formContainer" *ngIf="true">
+  <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="form">
+    <div class="field">
+      <label for="firstName">Ім&apos;я:</label>
+      <div class="inputContainer">
+        <input
+          type="text"
+          id="firstName"
+          formControlName="firstName"
+          [class.invalid]="showErrorStyle('firstName')"
+        />
+        <span *ngIf="showErrorMessage('firstName', 'required')" class="error"
+          >Обов&apos;язкове поле</span
+        >
+      </div>
+    </div>
+    <div class="field">
+      <label for="lastName">Прізвище:</label>
+      <div class="inputContainer">
+        <input
+          type="text"
+          id="lastName"
+          formControlName="lastName"
+          [class.invalid]="showErrorStyle('lastName')"
+        />
+        <span *ngIf="showErrorMessage('lastName', 'required')" class="error"
+          >Обов&apos;язкове поле</span
+        >
+      </div>
+    </div>
+    <div class="field">
+      <label for="email">Ел. пошта:</label>
+      <div class="inputContainer">
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          [class.invalid]="showErrorStyle('email')"
+        />
+        <span *ngIf="showErrorMessage('email', 'required')" class="error"
+          >Обов&apos;язкове поле</span
+        >
+        <span *ngIf="showErrorMessage('email', 'email')" class="error"
+          >Невалідна адреса електронної пошти</span
+        >
+      </div>
+    </div>
+    <div class="field">
+      <label for="skipEmail">Без ел. пошти:</label>
+      <input type="checkbox" id="skipEmail" formControlName="skipEmail" />
+    </div>
+    <button type="submit" [disabled]="!authForm.valid">Продовжити</button>
+  </form>
+</div>
